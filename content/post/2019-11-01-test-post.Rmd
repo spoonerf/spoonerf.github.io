@@ -20,7 +20,11 @@ weight: 1
 widget: blank
 ---
 
-[**Add some elements here**](https://sourcethemes.com/academic/docs/writing-markdown-latex/)
+[A test post to see if this website is working](https://sourcethemes.com/academic/docs/writing-markdown-latex/)
+
+```{r setup, include=FALSE, warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
 
 
 ```{r}
