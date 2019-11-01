@@ -1,0 +1,51 @@
+---
+title: Test Post
+author: Fiona Spooner
+date: '2019-11-01'
+categories:
+  - R
+tags:
+  - plot
+slug: test-post
+active: yes
+advanced:
+  css_class: ''
+  css_style: ''
+design:
+  background: {}
+  columns: '1'
+  spacing: {}
+headless: yes
+weight: 1
+widget: blank
+---
+
+[**Add some elements here**](https://sourcethemes.com/academic/docs/writing-markdown-latex/)
+
+
+```{r}
+library(leaflet)
+library(htmltools)
+```
+
+
+```{r}
+data(quakes)
+head(quakes)
+```
+
+
+```{r}
+pal <- colorNumeric(
+  palette = "Reds",
+  domain = quakes$mag)
+
+
+leaflet(quakes) %>%  
+  addProviderTiles("CartoDB.Positron") %>%
+  setView(mean(quakes$long), mean(quakes$lat), zoom = 4)%>% 
+  addCircleMarkers(lng=quakes$long, lat=quakes$lat,radius = quakes$mag, 
+                   color = ~pal(quakes$mag), stroke = FALSE, fillOpacity = 0.7) %>% 
+   addLabelOnlyMarkers(~long, ~lat, label = as.character(paste("Magnitude: ",quakes$mag))) 
+
+```
